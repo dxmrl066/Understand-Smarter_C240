@@ -464,3 +464,45 @@ document.addEventListener('DOMContentLoaded', () => {
   updateProgressDisplay();
   renderGoals();
 });
+
+// Mind Map Generation Event Listener
+document.getElementById("generate-mindmap-btn").addEventListener("click", async () => {
+    const inputData = document.getElementById("mindmap-input").value;
+    const resultContainer = document.getElementById("mindmap-result-container");
+    const button = document.getElementById("generate-mindmap-btn");
+
+    if (!inputData.trim()) {
+        alert("Please enter some notes or a topic first!");
+        return;
+    }
+
+    // Show loading state
+    button.innerText = "⏳ Mapping it out...";
+    button.disabled = true;
+    resultContainer.style.display = "block";
+    resultContainer.innerHTML = `<p style="color: #7b7b93;">AI is organizing your branches, please wait...</p>`;
+
+    try {
+        // Send a request to your server backend route
+        const response = await fetch("/api/generate-mindmap", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ notes: inputData })
+        });
+
+        const data = await response.json();
+
+        // Display the hierarchical mind map tree perfectly
+        resultContainer.innerHTML = `
+            <div style="background: #f9f9ff; padding: 25px; border-radius: 16px; border-left: 5px solid #9b9bff;">
+                <h4 style="color: #4A4A8A; margin-top: 0; margin-bottom: 15px;">Your Mind Map Breakdown:</h4>
+                <pre style="font-family: inherit; font-size: 16px; line-height: 1.8; white-space: pre-wrap; margin: 0; color: #2d2d5a;">${data.result}</pre>
+            </div>
+        `;
+    } catch (error) {
+        resultContainer.innerHTML = `<p style="color: #ff6b6b;">Error generating mind map. Please try again.</p>`;
+    } finally {
+        button.innerText = "✨ Generate Mind Map";
+        button.disabled = false;
+    }
+});

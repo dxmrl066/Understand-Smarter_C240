@@ -4,8 +4,15 @@ const express = require('express');
 const http = require('http');
 const https = require('https');
 const path = require('path');
+const multer = require('multer');
+const storage = multer.memoryStorage(); // Forces files to stay in memory buffers
+const upload = multer({ storage: storage });
+const pdfParse = require('pdf-parse');
+// Keep your team's quiz generator import
 const generateQuiz = require("./services/quizGenerator");
-
+// ADD THIS LINE right below it to bring in your new mindmap function!
+// Ensure there are NO curly braces around generateMindMap
+const generateMindMap = require("./services/mindmapGenerator");
 
 const app = express();
 const FEEDBACK_WEBHOOK_URL = (process.env.FEEDBACK_WEBHOOK_URL || 'https://n8ngc.codeblazar.org/webhook/Feedback').trim();
@@ -259,7 +266,54 @@ app.post('/api/quiz', async (req, res) => {
   }
 });
 
+// Make sure this route configuration is used in app.js
+// 2. Update your existing POST route to look like this:
+app.post('/api/generate-mindmap', upload.single('notesFile'), async (req, res) => {
+    try {
+        let extractedNotes = req.body.notes || "";
 
+        if (req.file) {
+            extractedNotes += "\n" + req.file.buffer.toString('utf-8');
+        }
+
+        if (!extractedNotes.trim()) {
+            return res.status(400).json({ error: "Please enter a topic, paste text, or upload a .txt document." });
+        }
+
+        let result = await generateMindMap(extractedNotes);
+
+        if (result) {
+            // 1. Remove markdown fences if the LLM snuck them in
+            result = result.replace(/```mermaid/g, "").replace(/```/g, "").trim();
+
+            // 2. Fix indentation to ensure it uses uniform 2-space increments
+            result = result.replace(/^\s+/gm, (match) => "  ".repeat(Math.floor(match.length / 2)));
+
+            // 3. BULLETPROOF SANITIZER: If Gemini forgot quotes on a line, wrap it safely
+            let lines = result.split('\n');
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i];
+                let trimmed = line.trim();
+                
+                // Skip the first root declaration line
+                if (trimmed === 'mindmap' || trimmed === '') continue;
+                
+                // If the line doesn't start with a quote, find the text and wrap it
+                if (!trimmed.startsWith('"')) {
+                    let indent = line.match(/^\s*/)[0];
+                    lines[i] = `${indent}"${trimmed.replace(/"/g, '')}"`;
+                }
+            }
+            result = lines.join('\n');
+        }
+
+        res.json({ result });
+
+    } catch (error) {
+        console.error("Backend text processing failed:", error);
+        res.status(500).json({ error: "Internal server error occurred while reading your notes." });
+    }
+});
 // ==========================
 // Start Server
 // ==========================

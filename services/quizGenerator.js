@@ -34,8 +34,9 @@ Return ONLY raw valid JSON text matching the schema. No markdown formatting code
 
     try {
         // 3. Dispatch the production network request to Gemini 2.5 Flash
+       // 3. Dispatch the production network request to Gemini 3.1 Flash Lite
         const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
+            model: 'gemini-3.1-flash-lite', // CHANGED: Points to the active quota model pool
             contents: prompt,
             config: {
                 temperature: 0.3,

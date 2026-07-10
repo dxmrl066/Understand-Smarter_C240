@@ -508,6 +508,41 @@
   </div>
 
 </div>
+<!-- STANDALONE MIND MAP GENERATOR CARD SECTION -->
+<div class="mindmap-section-card" style="background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); margin-top: 40px; text-align: left;">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+        <span style="font-size: 24px;">🧠</span>
+        <h2 style="color: #1e1e4f; margin: 0; font-size: 22px; font-weight: 700;">AI Auto Mind Map Generator</h2>
+    </div>
+    <p style="color: #7b7b93; margin-bottom: 20px; font-size: 14px;">Paste your dense chapter notes or a topic below to instantly map it out into an organized visual tree structure.</p>
+    
+    <div style="margin-bottom: 20px;">
+        <label style="font-weight: 600; color: #4A4A8A; display: block; margin-bottom: 8px; font-size: 14px;">Enter Topic or Paste Notes:</label>
+        <textarea id="mindmap-input" rows="6" placeholder="Example: Paste your notes on Object-Oriented Programming..." style="width: 100%; border: 1px solid #e2e2ed; border-radius: 12px; padding: 15px; font-family: inherit; font-size: 15px; resize: vertical; box-sizing: border-box; outline: none; transition: 0.3s; margin-bottom: 15px;"></textarea>
+        
+        <!-- Updated to only accept text files -->
+        <label style="font-weight: 600; color: #4A4A8A; display: block; margin-bottom: 8px; font-size: 14px;">Or Upload a Document (.txt):</label>
+        <input type="file" id="mindmap-file" accept=".txt" style="display: block; width: 100%; font-size: 14px; color: #7b7b93; cursor: pointer;" />
+    </div>
+
+    <button id="generate-mindmap-btn" style="background: #9b9bff; color: white; border: none; padding: 12px 28px; border-radius: 12px; font-weight: 600; font-size: 15px; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;">
+        ✨ Generate Mind Map
+    </button>
+
+    <div id="mindmap-result-container" style="margin-top: 25px; display: none;"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+    // Increase maxTextSize to allow giant mind maps from large documents
+    mermaid.initialize({ 
+        startOnLoad: false, 
+        theme: 'neutral', 
+        securityLevel: 'loose',
+        maxTextSize: 500000 // Raised from 50k to 500k!
+    });
+</script>
+<script src="/js/mindmap.js"></script>
 
 <!-- ========================= -->
 <!-- BADGES -->
@@ -568,5 +603,9 @@
   </div>
 
 </section>
+<!-- Load Mermaid Diagram Engine -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: false, theme: 'neutral' });</script>
 
+<script src="/js/mindmap.js"></script>
 <%- include('../partials/footer') %>
