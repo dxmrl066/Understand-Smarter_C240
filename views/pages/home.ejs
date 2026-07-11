@@ -1,4 +1,4 @@
-<%- include('../partials/header', { page: 'home', title: 'Home', description: 'A friendly learning hub for polytechnic students.' }) %>
+<%- include('../partials/header', { page: 'home', title: 'Home', description: 'A friendly learning hub.' }) %>
 
 <section class="hero-card">
   <div class="hero-copy">
@@ -14,28 +14,37 @@
     </div>
   </div>
 
+  <!-- ============================================================ -->
+  <!-- 🟣 HERO BUBBLE – THE CIRCLE (ADDED)                          -->
+  <!-- ============================================================ -->
   <div class="hero-panel">
-    <div class="mini-card">
-      <h3>Today's focus</h3>
-      <p>Confidence + clarity + calm revision</p>
-    </div>
-    <div class="mini-card">
-      <h3>Weekly streak</h3>
-      <p>4 days strong</p>
+    <div class="hero-bubble-wrap">
+      <div class="hero-bubble">
+        <span class="emoji-big">🌸</span>
+        <h3>Study Buddy</h3>
+        <p>calm · clear · confident</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Stats / Streak -->
+<div style="display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 2rem; justify-content: space-between;">
+  <div class="streak-chip"><span>🔥</span> Weekly streak: <strong>4 days strong</strong></div>
+  <div class="streak-chip"><span>🎯</span> Today's focus: <strong>Confidence + clarity + calm revision</strong></div>
+</div>
+
+<!-- Dashboard Cards -->
 <section class="section-grid">
-  <article class="card">
+  <article class="card clickable-card" data-card-type="study-dashboard" data-card-title="My Learning Summary" data-card-subtitle="A quick view of your current learning progress" role="button" aria-label="Open My Learning Summary">
     <h3>Study dashboard</h3>
     <p>Track your modules, revise slowly, and celebrate small wins.</p>
   </article>
-  <article class="card">
+  <article class="card clickable-card" data-card-type="progress-tracker" data-card-title="XP & Level Roadmap" data-card-subtitle="Your current level and upcoming milestones">
     <h3>Progress tracker</h3>
     <p>Visual checkpoints help you see how far you have come.</p>
   </article>
-  <article class="card">
+  <article class="card clickable-card" data-card-type="badge-milestones" data-card-title="Badge Milestones" data-card-subtitle="Track your earned badges and next milestone" role="button" aria-label="Open Badge Milestones">
     <h3>Achievement badges</h3>
     <p>Collect badges for steady effort and consistent practice.</p>
   </article>
@@ -78,5 +87,17 @@
     </details>
   </div>
 </section>
+
+<div class="modal hidden" id="card-click-modal" role="dialog" aria-modal="true" aria-labelledby="card-click-modal-title">
+  <div class="modal-backdrop" id="card-click-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="card-click-close">&times;</button>
+    <div class="modal-body">
+      <p class="eyebrow" id="card-click-subtitle"></p>
+      <h2 id="card-click-modal-title"></h2>
+      <div id="card-click-modal-content"></div>
+    </div>
+  </div>
+</div>
 
 <%- include('../partials/footer') %>

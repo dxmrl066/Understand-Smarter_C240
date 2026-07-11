@@ -11,18 +11,47 @@
 </section>
 
 <section class="section-grid">
-  <article class="card">
+  <article
+    class="card clickable-card"
+    data-card-title="Why Students Use Understand Smarter"
+    data-card-subtitle="Informational content only"
+    data-card-content="<ul><li>Ask questions without fear of judgment</li><li>Learn through simple explanations</li><li>Revisit concepts anytime</li><li>Study at your own pace</li><li>Build confidence gradually</li></ul>"
+    role="button"
+    aria-label="Open Why Students Use Understand Smarter"
+  >
     <h3>Supportive learning</h3>
     <p>Clear content and gentle guidance help students feel less overwhelmed.</p>
   </article>
-  <article class="card">
+  <article
+    class="card clickable-card"
+    data-card-title="Recommended Study Flow"
+    data-card-subtitle="Informational content only"
+    data-card-content="<ol><li>Set a small study goal</li><li>Read notes for 15-20 minutes</li><li>Generate a mind map</li><li>Complete a short quiz</li><li>Review mistakes</li><li>Repeat another day</li></ol><div style='margin-top: 1rem;'><p><strong>Study tips</strong></p><ul><li>✅ Focus on consistency</li><li>✅ Take short breaks</li><li>✅ Revise regularly</li><li>✅ Learn at your own pace</li></ul></div><p class='muted' style='margin-top: 1rem;'>This is an informational guide only and does not duplicate the interactive Study Tools experience.</p>"
+  >
     <h3>Self-paced study</h3>
     <p>Students can learn whenever and wherever they feel ready.</p>
   </article>
-  <article class="card">
+  <article
+    class="card clickable-card"
+    data-card-title="Benefits of Learning Without Judgment"
+    data-card-subtitle="Informational content only"
+    data-card-content="<ul><li>No fear of asking simple questions</li><li>No classroom pressure</li><li>Learn privately</li><li>Review concepts multiple times</li><li>Practice before assessments</li><li>Study at a comfortable pace</li></ul>"
+  >
     <h3>Less pressure</h3>
     <p>There is no need to rush or fear being judged for asking questions.</p>
   </article>
 </section>
+
+<div class="modal hidden" id="card-click-modal" role="dialog" aria-modal="true" aria-labelledby="card-click-modal-title">
+  <div class="modal-backdrop" id="card-click-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="card-click-close">&times;</button>
+    <div class="modal-body">
+      <p class="eyebrow" id="card-click-subtitle"></p>
+      <h2 id="card-click-modal-title"></h2>
+      <div id="card-click-modal-content"></div>
+    </div>
+  </div>
+</div>
 
 <%- include('../partials/footer') %>

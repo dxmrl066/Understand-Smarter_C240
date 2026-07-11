@@ -25,7 +25,11 @@
     </div>
   <% } %>
 
-  <form class="card form-card" action="/contact" method="post">
+  <form class="card form-card tool-form" action="/contact" method="post">
+    <div class="form-card-header">
+      <h3>Feedback Form</h3>
+      <p>Share suggestions, questions, or ideas for the site.</p>
+    </div>
     <label>
       Name
       <input type="text" name="name" placeholder="Your name" value="<%= (typeof values !== 'undefined' && values.name) ? values.name : '' %>" />

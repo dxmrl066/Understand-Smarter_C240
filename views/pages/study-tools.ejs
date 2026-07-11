@@ -7,9 +7,7 @@
 <section class="hero-card compact">
   <div class="hero-copy">
     <p class="eyebrow">Study Tools</p>
-
     <h1>Learn Smarter with AI</h1>
-
     <p>
       Set study goals, generate AI quizzes based on your modules,
       earn XP and unlock badges while revising.
@@ -22,395 +20,187 @@
   <!-- ========================= -->
   <!-- STUDY REMINDERS -->
   <!-- ========================= -->
-
   <article class="card tool-card">
-
     <div class="tool-head">
-
       <div>
         <p class="eyebrow">Study Reminder</p>
         <h3>Add and complete study goals</h3>
       </div>
-
       <div class="streak-chip" id="study-streak-chip">
         <span class="bubble-dot"></span>
-        <strong id="goal-completion-count">0</strong>
-        completed
+        <strong id="goal-completion-count">0</strong> completed
       </div>
-
     </div>
-
     <form id="goal-form" class="tool-form">
-
       <label>
         Study Goal
-
-        <input
-          type="text"
-          id="goal-input"
-          placeholder="Example: Revise Chapter 3"
-        />
-
+        <input type="text" id="goal-input" placeholder="Example: Revise Chapter 3" />
       </label>
-
       <div class="form-actions">
-
-        <button
-          type="button"
-          class="pill-button small"
-          id="add-goal-btn">
-
+        <button type="button" class="pill-button small" id="add-goal-btn">
           + Add Goal (+10 XP)
-
         </button>
-
       </div>
-
     </form>
-
     <div class="goals-panel">
-
       <div class="goals-header">
-
         <h4>Your Goals</h4>
-
-        <span
-          class="mini-pill"
-          id="goals-status">
-
-          No goals yet
-
-        </span>
-
+        <span class="mini-pill" id="goals-status">No goals yet</span>
       </div>
-
-      <ul
-        id="goals-list"
-        class="goals-list">
-
-        <li class="empty-state">
-          No study goals yet.
-        </li>
-
+      <ul id="goals-list" class="goals-list">
+        <li class="empty-state">No study goals yet.</li>
       </ul>
-
     </div>
-
   </article>
 
-    <!-- ========================= -->
+  <!-- ========================= -->
   <!-- AI QUIZ GENERATOR -->
   <!-- ========================= -->
-
   <article class="card tool-card">
-
     <div class="tool-head">
-
       <div>
-
-        <p class="eyebrow">
-          AI Quiz Generator
-        </p>
-
-        <h3>
-          Generate unlimited quizzes
-        </h3>
-
+        <p class="eyebrow">AI Quiz Generator</p>
+        <h3>Generate unlimited quizzes</h3>
       </div>
-
-      <div
-        class="badge-pill"
-        id="quiz-badge-pill">
-
-        🤖 Gemini AI
-
-      </div>
-
+      <div class="badge-pill" id="quiz-badge-pill">🤖 Gemini AI</div>
     </div>
-
-    <form
-      id="quiz-form"
-      class="tool-form">
-
+    <form id="quiz-form" class="tool-form">
       <label>
-
         Module
-
         <select id="quiz-topic">
-
-          <option value="">
-            -- Select Module --
-          </option>
-
-          <option value="Programming Fundamentals">
-            Programming Fundamentals
-          </option>
-
-          <option value="Web Development">
-            Web Development
-          </option>
-
-          <option value="Object-Oriented Programming">
-            Object-Oriented Programming
-          </option>
-
-          <option value="Data Structures">
-            Data Structures
-          </option>
-
-          <option value="Database Systems">
-            Database Systems
-          </option>
-
-          <option value="Operating Systems">
-            Operating Systems
-          </option>
-
-          <option value="Computer Networks">
-            Computer Networks
-          </option>
-
-          <option value="Artificial Intelligence">
-            Artificial Intelligence
-          </option>
-
-          <option value="Cyber Security">
-            Cyber Security
-          </option>
-
+          <option value="">-- Select Module --</option>
+          <option value="Programming Fundamentals">Programming Fundamentals</option>
+          <option value="Web Development">Web Development</option>
+          <option value="Object-Oriented Programming">Object-Oriented Programming</option>
+          <option value="Data Structures">Data Structures</option>
+          <option value="Database Systems">Database Systems</option>
+          <option value="Operating Systems">Operating Systems</option>
+          <option value="Computer Networks">Computer Networks</option>
+          <option value="Artificial Intelligence">Artificial Intelligence</option>
+          <option value="Cyber Security">Cyber Security</option>
         </select>
-
       </label>
-
       <label>
-
         Difficulty
-
         <select id="quiz-difficulty">
-
-          <option value="easy">
-            Easy
-          </option>
-
-          <option
-            value="medium"
-            selected>
-
-            Medium
-
-          </option>
-
-          <option value="hard">
-            Hard
-          </option>
-
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
         </select>
-
       </label>
-
       <label>
-
         Number of Questions
-
         <select id="quiz-count">
-
-          <option value="5">
-            5 Questions
-          </option>
-
-          <option value="10">
-            10 Questions
-          </option>
-
-          <option value="15">
-            15 Questions
-          </option>
-
+          <option value="5">5 Questions</option>
+          <option value="10">10 Questions</option>
+          <option value="15">15 Questions</option>
         </select>
-
       </label>
-
       <label>
-
         Quiz Type
-
         <select id="quiz-type">
-
-          <option value="multiple-choice">
-            Multiple Choice
-          </option>
-
-          <option value="true-false">
-            True / False
-          </option>
-
-          <option value="mixed">
-            Mixed
-          </option>
-
+          <option value="multiple-choice">Multiple Choice</option>
+          <option value="true-false">True / False</option>
+          <option value="mixed">Mixed</option>
         </select>
-
       </label>
-
       <div class="form-actions" style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
-
-        <!-- Added the missing loading container element to fix the classList error -->
         <div id="loading" class="hidden" style="text-align: center; font-style: italic; color: #666; margin-bottom: 4px;">
           Generating questions with Gemini AI...
         </div>
-
-        <button
-          type="button"
-          id="quiz-generate-btn"
-          class="pill-button">
-
+        <button type="button" id="quiz-generate-btn" class="pill-button">
           🚀 Generate AI Quiz
-
         </button>
-
       </div>
-
     </form>
-
     <div class="quiz-hint">
-
-      <p>
-
-        Select your module and difficulty.
-
-        Every click generates a brand-new quiz using Gemini AI.
-
-      </p>
-
+      <p>Select your module and difficulty. Every click generates a brand-new quiz using Gemini AI.</p>
     </div>
-
   </article>
 
-    <!-- ========================= -->
+  <!-- ========================= -->
   <!-- PROGRESS TRACKER -->
   <!-- ========================= -->
-
-  <article class="card tool-card">
-
+  <article
+    class="card tool-card clickable-card"
+    data-card-type="progress-tracker"
+    data-card-title="XP & Level Roadmap"
+    data-card-subtitle="Your current level and upcoming milestones"
+    role="button"
+    aria-label="Open XP & Level Roadmap"
+  >
     <div class="tool-head">
-
       <div>
         <p class="eyebrow">Progress Tracker</p>
-        <h3>Watch your progress grow</h3>
+        <h3>Monitor Progress</h3>
       </div>
-
       <div class="stat-pill">
-        <strong id="current-level">
-          Level 1
-        </strong>
+        <strong id="current-level">Level 1</strong>
       </div>
-
     </div>
-
     <div class="progress-card">
-
-      <div
-        class="progress-ring"
-        id="progress-ring"
-        data-target="0">
-
-        <span id="progress-value">
-          0%
-        </span>
-
+      <div class="progress-ring" id="progress-ring" data-target="0">
+        <span id="progress-value">0%</span>
       </div>
 
-      <div class="progress-meta">
+      <div class="progress-stats">
+        <div class="progress-stat-grid progress-stat-grid--two">
+          <div class="mini-card stat-card">
+            <span class="stat-label">XP</span>
+            <strong id="xp-points">0</strong>
+            <span class="stat-suffix">/ <span id="xp-needed">100</span></span>
+          </div>
 
-        <div class="mini-card stat-card">
-
-          <span class="stat-label">
-            XP
-          </span>
-
-          <strong id="xp-points">
-            0
-          </strong>
-
-          /
-
-          <span id="xp-needed">
-            100
-          </span>
-
+          <div class="mini-card stat-card">
+            <span class="stat-label">Badges</span>
+            <strong id="badge-count">0</strong>
+          </div>
         </div>
 
-        <div class="mini-card stat-card">
+        <div class="progress-stat-grid progress-stat-grid--two">
+          <div class="mini-card stat-card">
+            <span class="stat-label">Quizzes</span>
+            <strong id="quizzes-taken">0</strong>
+          </div>
 
-          <span class="stat-label">
-            Badges
-          </span>
-
-          <strong id="badge-count">
-            0
-          </strong>
-
+          <div class="mini-card stat-card">
+            <span class="stat-label">Goals</span>
+            <strong id="completed-goals">0</strong>
+          </div>
         </div>
 
-        <div class="mini-card stat-card">
-
-          <span class="stat-label">
-            Quizzes
-          </span>
-
-          <strong id="quizzes-taken">
-            0
-          </strong>
-
+        <div class="progress-stat-grid progress-stat-grid--full">
+          <div class="mini-card stat-card">
+            <span class="stat-label">Total Activities</span>
+            <strong id="activity-count">0</strong>
+          </div>
         </div>
 
+        <div class="progress-stat-grid progress-stat-grid--full">
+          <div class="mini-card stat-card">
+            <span class="stat-label">XP to Next Badge</span>
+            <div id="next-badge-chip">
+              <strong>100</strong> XP to unlock badge
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
-
-    <div class="stats-grid">
-
-      <div class="stat-chip">
-
-        <strong id="completed-goals">
-          0
-        </strong>
-
-        Goals Completed
-
-      </div>
-
-      <div class="stat-chip">
-
-        <strong id="activity-count">
-          0
-        </strong>
-
-        Total Activities
-
-      </div>
-
-      <div
-        class="stat-chip"
-        id="next-badge-chip">
-
-        <strong>
-          100 XP
-        </strong>
-
-        Next Badge
-
-      </div>
-
-    </div>
-
-    <p
-      class="milestone-message"
-      id="milestone-message">
-
+    <p class="milestone-message" id="milestone-message">
       Complete quizzes and study goals to level up!
-
     </p>
+
+    <!-- ============================================================ -->
+    <!-- ✅ RESET PROGRESS BUTTON – ADDED HERE                         -->
+    <!-- ============================================================ -->
+    <div style="margin-top: 1rem; text-align: center;">
+      <button id="reset-progress-btn" class="pill-button small" style="background: #ff6b6b; border-color: #ff6b6b;">
+        🔄 Reset Progress
+      </button>
+      <p style="font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem;">
+        This will delete all XP, goals, and badges.
+      </p>
+    </div>
 
   </article>
 
@@ -419,193 +209,73 @@
 <!-- ========================= -->
 <!-- QUIZ MODAL -->
 <!-- ========================= -->
-
-<div
-  class="modal hidden"
-  id="quiz-modal"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="quiz-modal-title">
-
-  <div
-    class="modal-backdrop"
-    id="quiz-modal-backdrop">
-  </div>
-
+<div class="modal hidden" id="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-modal-title">
+  <div class="modal-backdrop" id="quiz-modal-backdrop"></div>
   <div class="modal-content">
-
-    <button
-      class="modal-close"
-      id="quiz-modal-close">
-
-      &times;
-
-    </button>
-
+    <button class="modal-close" id="quiz-modal-close">&times;</button>
     <div class="modal-body">
-
-      <p class="eyebrow">
-        AI Quiz
-      </p>
-
-      <h2 id="quiz-modal-title">
-
-        Your Quiz
-
-      </h2>
-
-      <p id="quiz-modal-description">
-        Click "Generate AI Quiz" to start.
-      </p>
-
-      <ol
-        id="quiz-question-list"
-        class="quiz-list">
-
-      </ol>
-
-      <div
-        id="quiz-result-panel"
-        class="result-panel hidden">
-
-        <p
-          id="quiz-score-text"
-          class="result-score">
-
-          Score: 0
-
-        </p>
-
-        <p id="quiz-xp-earned">
-
-          XP Earned: 0
-
-        </p>
-
-        <p id="quiz-badge-message">
-
-          Nice work!
-
-        </p>
-
+      <p class="eyebrow">AI Quiz</p>
+      <h2 id="quiz-modal-title">Your Quiz</h2>
+      <p id="quiz-modal-description">Click "Generate AI Quiz" to start.</p>
+      <ol id="quiz-question-list" class="quiz-list"></ol>
+      <div id="quiz-result-panel" class="result-panel hidden">
+        <p id="quiz-score-text" class="result-score">Score: 0</p>
+        <p id="quiz-xp-earned">XP Earned: 0</p>
+        <p id="quiz-badge-message">Nice work!</p>
       </div>
-
       <div class="modal-actions">
-
-        <button
-          class="pill-button"
-          id="finish-quiz-btn">
-
-          Submit Answers
-
-        </button>
-
-
+        <button class="pill-button" id="finish-quiz-btn">Submit Answers</button>
       </div>
-
     </div>
-
   </div>
-
 </div>
+
 <!-- STANDALONE MIND MAP GENERATOR CARD SECTION -->
 <div class="mindmap-section-card" style="background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); margin-top: 40px; text-align: left;">
-    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
-        <span style="font-size: 24px;">🧠</span>
-        <h2 style="color: #1e1e4f; margin: 0; font-size: 22px; font-weight: 700;">AI Auto Mind Map Generator</h2>
-    </div>
-    <p style="color: #7b7b93; margin-bottom: 20px; font-size: 14px;">Paste your dense chapter notes or a topic below to instantly map it out into an organized visual tree structure.</p>
-    
-    <div style="margin-bottom: 20px;">
-        <label style="font-weight: 600; color: #4A4A8A; display: block; margin-bottom: 8px; font-size: 14px;">Enter Topic or Paste Notes:</label>
-        <textarea id="mindmap-input" rows="6" placeholder="Example: Paste your notes on Object-Oriented Programming..." style="width: 100%; border: 1px solid #e2e2ed; border-radius: 12px; padding: 15px; font-family: inherit; font-size: 15px; resize: vertical; box-sizing: border-box; outline: none; transition: 0.3s; margin-bottom: 15px;"></textarea>
-        
-        <!-- Updated to only accept text files -->
-        <label style="font-weight: 600; color: #4A4A8A; display: block; margin-bottom: 8px; font-size: 14px;">Or Upload a Document (.txt):</label>
-        <input type="file" id="mindmap-file" accept=".txt" style="display: block; width: 100%; font-size: 14px; color: #7b7b93; cursor: pointer;" />
-    </div>
-
-    <button id="generate-mindmap-btn" style="background: #9b9bff; color: white; border: none; padding: 12px 28px; border-radius: 12px; font-weight: 600; font-size: 15px; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;">
-        ✨ Generate Mind Map
-    </button>
-
-    <div id="mindmap-result-container" style="margin-top: 25px; display: none;"></div>
+  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+    <span style="font-size: 24px;">🧠</span>
+    <h2 style="color: #1e1e4f; margin: 0; font-size: 22px; font-weight: 700;">AI Auto Mind Map Generator</h2>
+  </div>
+  <p style="color: #7b7b93; margin-bottom: 20px; font-size: 14px;">
+    <label for="mindmap-input" style="font-weight: 700; color: #3333d3;">
+      ✨ Give it a one-line short summary about the topic you want to mind map out:
+    </label>
+  </p>
+  <div style="margin-bottom: 20px;">
+    <label style="font-weight: 600; color: #4A4A8A; display: block; margin-bottom: 8px; font-size: 14px;">Enter Topic or Paste One-Line Summary:</label>
+    <textarea id="mindmap-input" rows="6" placeholder="Example: Paste your notes on Object-Oriented Programming..." style="width: 100%; border: 1px solid #e2e2ed; border-radius: 12px; padding: 15px; font-family: inherit; font-size: 15px; resize: vertical; box-sizing: border-box; outline: none; transition: 0.3s; margin-bottom: 15px;"></textarea>
+  </div>
+  <button id="generate-mindmap-btn" style="background: #9b9bff; color: white; border: none; padding: 12px 28px; border-radius: 12px; font-weight: 600; font-size: 15px; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;">
+    ✨ Generate Mind Map
+  </button>
+  <div id="mindmap-result-container" style="margin-top: 25px; display: none;"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
-    // Increase maxTextSize to allow giant mind maps from large documents
-    mermaid.initialize({ 
-        startOnLoad: false, 
-        theme: 'neutral', 
-        securityLevel: 'loose',
-        maxTextSize: 500000 // Raised from 50k to 500k!
-    });
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'neutral',
+    securityLevel: 'loose',
+    maxTextSize: 500000
+  });
 </script>
 <script src="/js/mindmap.js"></script>
 
 <!-- ========================= -->
 <!-- BADGES -->
 <!-- ========================= -->
-
 <section class="section-block">
-
-  <h2>
-
-    Badge Milestones
-
-  </h2>
-
-  <div
-    class="feature-list"
-    id="badge-milestones">
-
-    <div
-      class="feature-pill"
-      id="badge-100">
-
-      🎯 Beginner
-      <br>
-      100 XP
-
-    </div>
-
-    <div
-      class="feature-pill"
-      id="badge-250">
-
-      ⭐ Intermediate
-      <br>
-      250 XP
-
-    </div>
-
-    <div
-      class="feature-pill"
-      id="badge-500">
-
-      👑 Master
-      <br>
-      500 XP
-
-    </div>
-
-    <div
-      class="feature-pill"
-      id="badge-1000">
-
-      🏆 AI Champion
-      <br>
-      1000 XP
-
-    </div>
-
+  <h2>Badge Milestones</h2>
+  <div class="feature-list" id="badge-milestones">
+    <div class="feature-pill" id="badge-100">🎯 Beginner<br>100 XP</div>
+    <div class="feature-pill" id="badge-250">⭐ Intermediate<br>250 XP</div>
+    <div class="feature-pill" id="badge-500">👑 Master<br>500 XP</div>
+    <div class="feature-pill" id="badge-1000">🏆 AI Champion<br>1000 XP</div>
   </div>
-
 </section>
-<!-- Load Mermaid Diagram Engine -->
+
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({ startOnLoad: false, theme: 'neutral' });</script>
-
 <script src="/js/mindmap.js"></script>
 <%- include('../partials/footer') %>

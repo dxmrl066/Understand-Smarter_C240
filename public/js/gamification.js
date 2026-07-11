@@ -6,7 +6,7 @@ class GamificationSystem {
   constructor() {
     this.STORAGE_KEY = 'gamification_progress';
     this.XP_PER_LEVEL = 100;
-    this.BADGE_THRESHOLDS = [100, 250, 500];
+    this.BADGE_THRESHOLDS = [100, 250, 500, 1000];
     this.QUIZ_XP = {
       easy: 5,
       medium: 10,
@@ -148,7 +148,7 @@ class GamificationSystem {
     return null;
   }
 
-  // Get activity count
+  // Get activity count (quizzes + completed goals)
   getActivityCount() {
     return this.data.quizzesTaken + this.getCompletedGoals().length;
   }
@@ -156,6 +156,11 @@ class GamificationSystem {
   // Get total XP
   getTotalXP() {
     return this.data.totalXP;
+  }
+
+  // Get number of quizzes taken (added from the simpler version)
+  getQuizzesTaken() {
+    return this.data.quizzesTaken || 0;
   }
 
   // Register listener for updates
