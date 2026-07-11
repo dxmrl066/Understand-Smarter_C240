@@ -10,6 +10,7 @@ const upload = multer({ storage: storage });
 const pdfParse = require('pdf-parse');
 // Keep your team's quiz generator import
 const generateQuiz = require("./services/quizGenerator");
+const generateYouTubeNotes = require("./services/youtubeNotesGenerator");
 // ADD THIS LINE right below it to bring in your new mindmap function!
 // Ensure there are NO curly braces around generateMindMap
 const generateMindMap = require("./services/mindmapGenerator");
@@ -262,6 +263,33 @@ app.post('/api/quiz', async (req, res) => {
     res.status(500).json({
       success: false,
       message: err.message || 'Failed to generate quiz.'
+    });
+  }
+});
+
+app.post('/api/youtube-notes', async (req, res) => {
+  try {
+    const { youtubeLink, noteStyle } = req.body;
+    const trimmedLink = String(youtubeLink || '').trim();
+
+    if (!trimmedLink) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide a YouTube link.'
+      });
+    }
+
+    const notes = await generateYouTubeNotes(trimmedLink, noteStyle || 'Summary');
+
+    res.json({
+      success: true,
+      notes
+    });
+  } catch (err) {
+    console.error('YouTube Notes API error:', err);
+    res.status(500).json({
+      success: false,
+      message: err.message || 'Failed to generate YouTube notes.'
     });
   }
 });

@@ -9,18 +9,196 @@
 </section>
 
 <section class="section-grid">
-  <article class="card">
+  <article
+    class="card clickable-card"
+    data-card-type="revision-guide"
+    data-card-title="Study Strategies"
+    data-card-subtitle="Informational content only"
+  >
     <h3>Revision guide</h3>
     <p>Begin with short, focused topics and build confidence step by step.</p>
   </article>
-  <article class="card">
+  <article
+    class="card clickable-card"
+    data-card-type="study-playlist"
+    data-card-title="Learning Videos & Focus Music"
+    data-card-subtitle="Curated study links and focus music"
+  >
     <h3>Study playlist</h3>
     <p>Collect helpful videos and audio guidance in one easy place.</p>
   </article>
-  <article class="card">
+  <article
+    class="card clickable-card"
+    id="support-card"
+    role="button"
+    tabindex="0"
+    aria-label="Open support options"
+  >
     <h3>Ask for support</h3>
     <p>Use the AI assistant or feedback form whenever you need another explanation.</p>
   </article>
 </section>
+
+<div
+  class="modal hidden"
+  id="support-options-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="support-options-title">
+
+  <div
+    class="modal-backdrop"
+    id="support-options-backdrop">
+  </div>
+
+  <div class="modal-content support-modal-content">
+    <button
+      class="modal-close"
+      id="support-options-close"
+      aria-label="Close support options">
+      &times;
+    </button>
+
+    <div class="modal-body">
+      <p class="eyebrow">Support channels</p>
+      <h2 id="support-options-title">Choose Your Support Option</h2>
+      <p class="muted">Choose the option that best fits your question. Website Chat Assistant is for school, polytechnic and study guidance. Telegram Study Bot is for lesson explanations and subject learning.</p>
+
+      <div class="support-option-grid">
+        <div class="support-option-card">
+          <div class="support-option-header">
+            <span class="support-icon">💬</span>
+            <h3>Website Chat Assistant</h3>
+          </div>
+          <p><strong>Use for:</strong></p>
+          <ul>
+            <li>Polytechnic-related questions</li>
+            <li>School procedures</li>
+            <li>Academic guidance</li>
+            <li>Study techniques</li>
+            <li>General student support</li>
+          </ul>
+          <p><strong>Examples:</strong></p>
+          <ul>
+            <li>How does GPA work?</li>
+            <li>How do credit units work?</li>
+            <li>How can I improve my study habits?</li>
+          </ul>
+          <button type="button" class="pill-button" id="open-chat-assistant-btn">Open Chat Assistant</button>
+        </div>
+
+        <div class="support-option-card">
+          <div class="support-option-header">
+            <span class="support-icon">📱</span>
+            <h3>Telegram Study Bot</h3>
+          </div>
+          <p><strong>Use for:</strong></p>
+          <ul>
+            <li>Lesson explanations</li>
+            <li>Revision support</li>
+            <li>Subject-related learning</li>
+            <li>Study assistance</li>
+          </ul>
+          <p><strong>Examples:</strong></p>
+          <ul>
+            <li>Explain Object-Oriented Programming</li>
+            <li>Help me understand databases</li>
+          </ul>
+          <a class="pill-button secondary" href="https://t.me/studybuddy_irdina_bot" target="_blank" rel="noopener noreferrer">Open Telegram Bot</a>
+        </div>
+      </div>
+
+      <p class="support-difference">
+        Website Chat Assistant is for school, polytechnic and study guidance. Telegram Study Bot is for lesson explanations and subject learning.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ========================= -->
+<!-- STUDY STRATEGIES MODAL -->
+<!-- ========================= -->
+
+<div
+  class="modal hidden"
+  id="study-strategies-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="study-strategies-title">
+
+  <div
+    class="modal-backdrop"
+    id="study-strategies-backdrop">
+  </div>
+
+  <div class="modal-content">
+
+    <button
+      class="modal-close"
+      id="study-strategies-close">
+
+      &times;
+
+    </button>
+
+    <div class="modal-body">
+
+      <p class="eyebrow">
+        Revision Guide
+      </p>
+
+      <h2 id="study-strategies-title">
+
+        Study Strategies
+
+      </h2>
+
+      <div class="study-strategies-content">
+
+        <div class="strategy-section">
+          <h3>Before Studying</h3>
+          <ul>
+            <li>Set a goal</li>
+            <li>Prepare your materials</li>
+          </ul>
+        </div>
+
+        <div class="strategy-section">
+          <h3>During Studying</h3>
+          <ul>
+            <li>Take short notes</li>
+            <li>Use active recall</li>
+            <li>Create mind maps</li>
+          </ul>
+        </div>
+
+        <div class="strategy-section">
+          <h3>After Studying</h3>
+          <ul>
+            <li>Test yourself</li>
+            <li>Review mistakes</li>
+            <li>Complete quizzes</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="modal hidden" id="card-click-modal" role="dialog" aria-modal="true" aria-labelledby="card-click-modal-title">
+  <div class="modal-backdrop" id="card-click-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="card-click-close">&times;</button>
+    <div class="modal-body">
+      <p class="eyebrow" id="card-click-subtitle"></p>
+      <h2 id="card-click-modal-title"></h2>
+      <div id="card-click-modal-content"></div>
+    </div>
+  </div>
+</div>
 
 <%- include('../partials/footer') %>

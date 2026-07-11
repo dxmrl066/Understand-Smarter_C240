@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %> | Understand Smarter</title>
+  <meta name="description" content="<%= description %>" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <style>
+    /* ── Floating background bubbles ── */
+    .bubble-background {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 25% 25%, #f0faff, #b0d9eb);
+      backdrop-filter: blur(2px);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 30px rgba(70, 170, 210, 0.35),
+                  inset 0 -8px 20px rgba(0, 40, 60, 0.08),
+                  inset 0 8px 25px rgba(255, 255, 255, 0.7);
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .bubble-one { width: 140px; height: 140px; top: 8%; left: 5%; }
+    .bubble-two { width: 90px; height: 90px; top: 20%; right: 10%; animation-delay: 2s; }
+    .bubble-three { width: 120px; height: 120px; bottom: 15%; left: 12%; animation-delay: 4s; }
+    .bubble-four { width: 70px; height: 70px; bottom: 8%; right: 15%; animation-delay: 1s; }
+
+    /* ── Flower Background – only 6 flowers ── */
+    .flower-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .flower-bg .flower {
+      position: absolute;
+      font-size: 2.5rem;
+      animation: floatFlower var(--duration, 8s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+      filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.2));
+      transition: transform 0.3s ease, filter 0.3s ease;
+      will-change: transform;
+      opacity: 0.7;
+    }
+
+    .flower-bg .flower:hover {
+      transform: scale(1.3) rotate(20deg) !important;
+      filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.5));
+      opacity: 1;
+    }
+
+    @keyframes floatFlower {
+      0% { transform: translateY(0) rotate(0deg) scale(1); }
+      25% { transform: translateY(-18px) rotate(8deg) scale(1.05); }
+      50% { transform: translateY(-8px) rotate(-4deg) scale(0.95); }
+      75% { transform: translateY(-25px) rotate(12deg) scale(1.08); }
+      100% { transform: translateY(0) rotate(0deg) scale(1); }
+    }
+
+    /* 6 flowers – fewer, less clutter */
+    .flower-1 { top: 5%; left: 3%; font-size: 3.0rem; --duration: 7s; --delay: 0s; }
+    .flower-2 { top: 12%; right: 5%; font-size: 2.4rem; --duration: 8.5s; --delay: 1.2s; }
+    .flower-3 { top: 45%; left: 2%; font-size: 3.4rem; --duration: 9s; --delay: 2.5s; }
+    .flower-4 { top: 50%; right: 3%; font-size: 3.0rem; --duration: 7.5s; --delay: 0.8s; }
+    .flower-5 { bottom: 15%; left: 5%; font-size: 2.8rem; --duration: 8.2s; --delay: 3.2s; }
+    .flower-6 { bottom: 20%; right: 5%; font-size: 2.6rem; --duration: 8.8s; --delay: 2.2s; }
+
+    /* Glow variations */
+    .flower-bg .flower:nth-child(odd) {
+      filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.3)) drop-shadow(0 0 40px rgba(255, 182, 193, 0.1));
+    }
+    .flower-bg .flower:nth-child(even) {
+      filter: drop-shadow(0 0 20px rgba(184, 159, 245, 0.25)) drop-shadow(0 0 40px rgba(184, 159, 245, 0.08));
+    }
+
+    .topbar,
+    .page-shell,
+    .site-footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 860px) {
+      .flower-bg .flower { font-size: 1.6rem !important; opacity: 0.4 !important; }
+      .bubble { display: none; } /* hide bubbles on mobile for cleaner look */
+    }
+    @media (max-width: 480px) {
+      .flower-bg .flower { font-size: 1.2rem !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ============================================================ -->
+  <!-- 🌸 BUBBLES (background) + 6 FLOWERS                          -->
+  <!-- ============================================================ -->
+
+  <!-- Floating background bubbles -->
+  <div class="bubble-background" aria-hidden="true">
+    <div class="bubble bubble-one"></div>
+    <div class="bubble bubble-two"></div>
+    <div class="bubble bubble-three"></div>
+    <div class="bubble bubble-four"></div>
+  </div>
+
+  <!-- Floating flowers (6) -->
+  <div class="flower-bg">
+    <span class="flower flower-1">🌸</span>
+    <span class="flower flower-2">🌺</span>
+    <span class="flower flower-3">🌻</span>
+    <span class="flower flower-4">🌹</span>
+    <span class="flower flower-5">🌷</span>
+    <span class="flower flower-6">🌼</span>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Include Header (your header partial)                         -->
+  <!-- ============================================================ -->
+  <%- include('partials/header') %>
+
+  <!-- Main Content Area -->
+  <main class="page-shell">
+    <%- body %>
+  </main>
+
+  <!-- Include Footer -->
+  <%- include('partials/footer') %>
+
+  <!-- ============================================================ -->
+  <!-- ✅ SHARED MODAL – ALREADY HERE                               -->
+  <!-- ============================================================ -->
+  <div class="modal hidden" id="card-click-modal" role="dialog" aria-modal="true" aria-labelledby="card-click-modal-title">
+    <div class="modal-backdrop" id="card-click-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="card-click-close">&times;</button>
+      <div class="modal-body">
+        <p class="eyebrow" id="card-click-subtitle"></p>
+        <h2 id="card-click-modal-title"></h2>
+        <div id="card-click-modal-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botpress & Scripts -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2026/07/03/10/20260703102850-V3KY19LL.js" defer></script>
+  <script src="/js/gamification.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
