@@ -105,16 +105,30 @@
 
   </div>
 
-    <header class="topbar">
-      <a class="brand" href="/">Understand Smarter</a>
-      <nav class="nav-links">
-        <a class="<%= page === 'home' ? 'active' : '' %>" href="/">Home</a>
-        <a class="<%= page === 'ai-assistant' ? 'active' : '' %>" href="/ai-assistant">AI Assistant</a>
-        <a class="<%= page === 'study-tools' ? 'active' : '' %>" href="/study-tools">Study Tools</a>
-        <a class="<%= page === 'about' ? 'active' : '' %>" href="/about">About</a>
-        <a class="<%= page === 'resources' ? 'active' : '' %>" href="/resources">Resources</a>
-        <a class="<%= page === 'contact' ? 'active' : '' %>" href="/contact">Contact</a>
-      </nav>
-    </header>
+  <!-- Top Bar -->
+  <header class="topbar" style="position: relative; display: flex; align-items: center; justify-content: space-between;">
+    
+    <!-- Changed: Added absolute positioning, height, and alignment to the anchor -->
+    <a class="brand" href="/" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; padding: 0; z-index: 10;">
+        <img 
+          src="/images/logo.png" 
+          alt="Understand Smarter Logo" 
+          style="height: 115px; width: auto; object-fit: contain; transition: transform 0.2s ease;" 
+          onmouseover="this.style.transform='scale(1.05)'" 
+          onmouseout="this.style.transform='scale(1)'"
+          onerror="this.src='Untitled_design__2_-removebg-preview.png'"
+        />
+    </a>
+    
+    <!-- Note: You might need to add a margin-left here so the links don't overlap the logo -->
+    <nav class="nav-links" style="margin-left: auto;">
+      <a href="/" class="<%= page === 'home' ? 'active' : '' %>">Home</a>
+      <a href="/ai-assistant" class="<%= page === 'ai-assistant' ? 'active' : '' %>">AI Assistant</a>
+      <a href="/study-tools" class="<%= page === 'study-tools' ? 'active' : '' %>">Study Tools</a>
+      <a href="/about" class="<%= page === 'about' ? 'active' : '' %>">About</a>
+      <a href="/resources" class="<%= page === 'resources' ? 'active' : '' %>">Resources</a>
+      <a href="/contact" class="<%= page === 'contact' ? 'active' : '' %>">Contact</a>
+    </nav>
+</header>
 
   <main class="page-shell">
