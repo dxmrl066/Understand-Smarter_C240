@@ -68,7 +68,6 @@
       background: radial-gradient(circle, rgba(204, 239, 220, 0.28), transparent 72%);
     }
 
-    /* ── Floating background bubbles ── */
     .bubble-background {
       position: fixed;
       inset: 0;
@@ -93,7 +92,6 @@
     .bubble-three { width: 120px; height: 120px; bottom: 15%; left: 12%; animation-delay: 4s; }
     .bubble-four { width: 70px; height: 70px; bottom: 8%; right: 15%; animation-delay: 1s; }
 
-    /* ── Enhanced Flower System ── */
     .flower-background {
       position: fixed;
       inset: 0;
@@ -243,7 +241,6 @@
       padding: 2rem 1.2rem 4rem;
     }
 
-    /* ── PASTEL BLUE CARDS ── */
     .hero-card,
     .card,
     .chat-placeholder,
@@ -327,9 +324,7 @@
       margin-top: 1rem;
     }
 
-    /* ============================================================ */
-    /* 🎀 PASTEL PINK BUTTONS                                        */
-    /* ============================================================ */
+   
 
     .pill-button {
       display: inline-flex;
@@ -398,9 +393,6 @@
       box-shadow: 0 8px 25px rgba(240, 160, 184, 0.35);
     }
 
-    /* ============================================================ */
-    /* 🎀 END PASTEL PINK BUTTONS                                   */
-    /* ============================================================ */
 
     .hero-bubble-wrap {
       display: flex;
@@ -492,9 +484,7 @@
       box-shadow: 0 14px 28px rgba(126, 129, 186, 0.16);
     }
 
-    /* ============================================================ */
-    /* ✅ WIDER CARDS – increased min-width and padding             */
-    /* ============================================================ */
+
     .section-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -543,6 +533,36 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(111, 140, 255, 0.2);
       background: linear-gradient(135deg, rgba(111, 140, 255, 0.2), rgba(184, 159, 245, 0.2));
+    }
+
+
+    #badge-100,
+    #badge-250,
+    #badge-500,
+    #badge-1000 {
+      background: #f3f4f6 !important;
+      color: #4b5563 !important;
+      border: 1px solid #d1d5db !important;
+      box-shadow: 0 6px 14px rgba(107, 114, 128, 0.08) !important;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      line-height: 1.35;
+    }
+
+    #badge-100[style*="var(--primary)"],
+    #badge-250[style*="var(--primary)"],
+    #badge-500[style*="var(--primary)"],
+    #badge-1000[style*="var(--primary)"] {
+      background: #dcfce7 !important;
+      color: #14532d !important;
+      border-color: #22c55e !important;
+      box-shadow: 0 10px 20px rgba(34, 197, 94, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.35) !important;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
     }
 
     .testimonial-grid {
@@ -630,7 +650,6 @@
       flex-shrink: 0;
     }
 
-    /* ── STUDY TOOLS SPECIFIC STYLES ── */
 
     .tool-head {
       display: flex;
@@ -1087,9 +1106,6 @@
       margin: 0.3rem 0 0 0;
     }
 
-    /* ============================================================ */
-    /* 🎨 QUIZ MODAL – FIXED: HIDDEN BY DEFAULT                    */
-    /* ============================================================ */
 
     .modal {
       position: fixed;
@@ -1530,9 +1546,7 @@
       .modal-actions .pill-button { width: 100%; }
     }
 
-    /* ============================================================ */
-    /* 📬 BEAUTIFUL CONTACT FORM – FULLY REDESIGNED                  */
-    /* ============================================================ */
+   
     .contact-card {
       background: linear-gradient(135deg, rgba(210, 235, 255, 0.85), rgba(240, 248, 255, 0.65));
       border: 1px solid rgba(255, 255, 255, 0.7);
@@ -1642,7 +1656,6 @@
 </head>
 <body>
 
-  <!-- ── Floating flowers ── -->
   <div class="flower-background">
     <div class="flower-wrapper flower-1"><span class="flower-icon">🌸</span></div>
     <div class="flower-wrapper flower-2"><span class="flower-icon">🌺</span></div>
@@ -1662,7 +1675,6 @@
     <div class="flower-wrapper flower-16"><span class="flower-icon">🌻</span></div>
   </div>
 
-  <!-- Floating background bubbles -->
   <div class="bubble-background" aria-hidden="true">
     <div class="bubble bubble-one"></div>
     <div class="bubble bubble-two"></div>
@@ -1670,7 +1682,6 @@
     <div class="bubble bubble-four"></div>
   </div>
 
-  <!-- Top Bar -->
   <header class="topbar">
     <a href="#" class="brand">📘 Understand Smarter</a>
     <nav class="nav-links">
@@ -1744,7 +1755,6 @@
         </div>
       </article>
 
-      <!-- 2. AI QUIZ GENERATOR -->
       <article class="card tool-card">
         <div class="tool-head">
           <div>
@@ -1880,9 +1890,6 @@
         </div>
       </article>
 
-      <!-- ============================================================ -->
-      <!-- 🎵 4. STUDY PLAYLIST – NEW CARD ADDED                       -->
-      <!-- ============================================================ -->
       <article class="card clickable-card" data-card-type="study-playlist" data-card-title="Learning Videos & Focus Music" data-card-subtitle="Curated playlists and channels to support focused study">
         <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem;">
           <span style="font-size: 1.8rem;">🎵</span>
@@ -1893,9 +1900,7 @@
 
     </section>
 
-    <!-- ============================================================ -->
-    <!-- 🎯 QUIZ MODAL – NOW PROPERLY HIDDEN BY DEFAULT              -->
-    <!-- ============================================================ -->
+   
     <div class="modal hidden" id="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-modal-title">
       <div class="modal-backdrop" id="quiz-modal-backdrop"></div>
       <div class="modal-content">
@@ -1930,7 +1935,6 @@
       </div>
     </div>
 
-    <!-- ===== BADGE MILESTONES ===== -->
     <section class="section-block">
       <h2>🏆 Badge Milestones</h2>
       <div class="feature-list" id="badge-milestones">
@@ -1941,9 +1945,7 @@
       </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- 📬 BEAUTIFUL CONTACT FORM – FULLY REDESIGNED                 -->
-    <!-- ============================================================ -->
+   
     <section class="section-block" style="margin-top: 3rem;">
       <h2 style="display: flex; align-items: center; gap: 0.6rem;">
         <span>📬</span> Contact Us
@@ -1983,7 +1985,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <p>© 2026 Understand Smarter · Built with <span class="footer-heart">🌸</span> for calm learning</p>
   </footer>

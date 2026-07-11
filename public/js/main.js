@@ -847,4 +847,47 @@ if (mindMapButton) {
       button.disabled = false;
     }
   });
+<<<<<<< HEAD
+=======
+}
+
+const youtubeForm = document.getElementById("youtube-form");
+if (youtubeForm) {
+  youtubeForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const youtubeLinkInput = document.getElementById("youtube-link") || document.getElementById("youtubeLink");
+    const noteStyleInput = document.getElementById("note-style") || document.getElementById("noteStyle");
+    const youtubeLink = youtubeLinkInput ? youtubeLinkInput.value : "";
+    const noteStyle = noteStyleInput ? noteStyleInput.value : "Summary";
+
+    const resultDiv = document.getElementById("youtube-result") || document.getElementById("result");
+    if (resultDiv) {
+      resultDiv.textContent = "⏳ Generating notes...";
+    }
+
+    try {
+      const response = await fetch("/api/youtube-notes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ youtubeLink, noteStyle })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        if (resultDiv) {
+          resultDiv.textContent = data.notes;
+        }
+      } else if (resultDiv) {
+        resultDiv.textContent = "❌ " + (data.message || "No notes were returned.");
+      }
+    } catch (err) {
+      if (resultDiv) {
+        resultDiv.textContent = "⚠️ Error generating notes.";
+      }
+      console.error(err);
+    }
+  });
+>>>>>>> d75a237ca6709993da990aaadaf84dfd0f0328c9
 }

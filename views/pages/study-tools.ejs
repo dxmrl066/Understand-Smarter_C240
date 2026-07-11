@@ -262,6 +262,43 @@
 </script>
 <script src="/js/mindmap.js"></script>
 
+<section class="section-block" style="margin-top: 24px;">
+  <div class="mindmap-section-card" style="background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); margin-top: 0; text-align: left;">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+      <span style="font-size: 24px;">📹</span>
+      <h2 style="color: #1e1e4f; margin: 0; font-size: 22px; font-weight: 700;">YouTube Notes Generator</h2>
+    </div>
+    <p style="color: #7b7b93; margin-bottom: 20px; font-size: 14px;">
+      Paste a YouTube link and turn the video into organised study notes without leaving this page.
+    </p>
+    <form id="youtube-form" style="display: flex; flex-direction: column; gap: 12px;">
+      <label for="youtube-link" style="font-weight: 600; color: #4A4A8A; display: block;">YouTube Link</label>
+      <input
+        type="text"
+        id="youtube-link"
+        name="youtubeLink"
+        placeholder="https://www.youtube.com/watch?v=..."
+        style="width: 100%; border: 1px solid #e2e2ed; border-radius: 12px; padding: 15px; font-family: inherit; font-size: 15px; box-sizing: border-box; outline: none; transition: 0.3s;"
+      />
+      <label for="note-style" style="font-weight: 600; color: #4A4A8A; display: block;">Note Style</label>
+      <select
+        id="note-style"
+        name="noteStyle"
+        style="width: 100%; border: 1px solid #e2e2ed; border-radius: 12px; padding: 15px; font-family: inherit; font-size: 15px; box-sizing: border-box; background: #fff;"
+      >
+        <option value="Summary">Summary</option>
+        <option value="Detailed">Detailed</option>
+        <option value="Revision">Revision</option>
+        <option value="Cheatsheet">Cheatsheet</option>
+      </select>
+      <button type="submit" style="background: #9b9bff; color: white; border: none; padding: 12px 28px; border-radius: 12px; font-weight: 600; font-size: 15px; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; width: fit-content;">
+        ✨ Generate Notes
+      </button>
+    </form>
+    <div id="youtube-result" style="margin-top: 20px; padding: 16px 18px; border-radius: 14px; background: #f8f8ff; color: #4A4A8A; white-space: pre-wrap; line-height: 1.7;">Your notes will appear here.</div>
+  </div>
+</section>
+
 <!-- ========================= -->
 <!-- BADGES -->
 <!-- ========================= -->
